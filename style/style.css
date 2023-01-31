@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#gameStats {
+    position: absolute;
+    display: flex;
+}
