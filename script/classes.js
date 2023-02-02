@@ -49,10 +49,8 @@ class GameManager {
     // declare the score
     const getScore = document.getElementById("score");
     getScore.style.color = "white";
-    
 
     if (GameManager.won) {
-
       getScore.innerHTML = `<h1>Congratualtions your score is ${GameManager.score}</h1><h1>Press r to restart</h1>`;
     } else {
       getScore.innerHTML = `<h1>Score is ${GameManager.score}</h1><h1>Press r to restart</h1>`;
@@ -312,13 +310,12 @@ class Bricks extends Sprite {
   isHit(ball) {
     if (
       ball.position.x + ball.radius >= this.position.x &&
-      ball.position.x - ball.radius <= this.position.x + this.width &&
+      ball.position.x + ball.radius <= this.position.x + this.width &&
       ball.position.y + ball.radius >= this.position.y &&
-      ball.position.y - ball.radius <= this.position.y + this.height
+      ball.position.y <= this.position.y + this.height
     ) {
       // prevent brick from hitting it self
       if (this.counter == ball.hitBy) {
-        console.log("Detected");
         //ball.velocity.y *= -1;
         ball.velocity.x *= -1;
         return false;
@@ -327,8 +324,8 @@ class Bricks extends Sprite {
       ball.hitBy = this.counter;
 
       if (
-        ball.position.x < this.position.x ||
-        ball.position.x - ball.radius > this.position.x + this.width
+        ball.position.x + ball.radius < this.position.x ||
+        ball.position.x + ball.radius > this.position.x + this.width
       ) {
         // left & right side
         ball.velocity.x *= -1;
